@@ -62,7 +62,7 @@ public class SavesScript : MonoBehaviour
         currentSave = 0;
         PlayerPrefs.SetString("PreferredSave", "save1");
         Directory.CreateDirectory(Application.persistentDataPath + "/saves/" + PlayerPrefs.GetString("PreferedSave", "save1"));
-        LevelLoader.LoadLevel(4);
+        LevelLoader.LoadLevel(3);
     }
 
     public void SetSaveTwoAsDefault()
@@ -71,7 +71,7 @@ public class SavesScript : MonoBehaviour
         PlayerPrefs.SetString("PreferredSave", "save2");
         Directory.CreateDirectory(Application.persistentDataPath + "/saves/" +
                                   PlayerPrefs.GetString("PreferredSave", "save1"));
-        LevelLoader.LoadLevel(4);
+        LevelLoader.LoadLevel(3);
     }
     
     public void SetSaveThreeAsDefault()
@@ -80,6 +80,6 @@ public class SavesScript : MonoBehaviour
         PlayerPrefs.SetString("PreferredSave", "save3");
         Directory.CreateDirectory(Application.persistentDataPath + "/saves/" +
                                   PlayerPrefs.GetString("PreferredSave", "save1"));
-        LevelLoader.LoadLevel(4);
+        LevelLoader.LoadLevel(3);
     }
 }

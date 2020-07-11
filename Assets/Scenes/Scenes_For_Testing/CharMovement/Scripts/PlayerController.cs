@@ -48,6 +48,11 @@ public class PlayerController : MonoBehaviour
         }
         saveManager = FindObjectOfType<SaveManager>();
         blackScreenAnimator = FindObjectOfType<Canvas>().GetComponentInChildren<Animator>();
+        if (!saveManager.GetSaveExisting()) return;
+        saveManager.Load();
+
+        currentHealth = stats.health;
+        currentShield = stats.shield;
     }
 
     private void Start()
@@ -150,12 +155,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag.Equals("Shield"))
-        {
-            Debug.Log("Shield Power-UP Picked!");
-            hpBar.Shield(99, playerMaxShield);
-            Destroy(other.gameObject);
-        }
+        if (!other.gameObject.tag.Equals("Shield")) return;
+        Debug.Log("Shield Power-UP Picked!");
+        hpBar.Shield(99, playerMaxShield);
+        Destroy(other.gameObject);
     }
 
     public void OnCollisionExit2D(Collision2D targetObj)

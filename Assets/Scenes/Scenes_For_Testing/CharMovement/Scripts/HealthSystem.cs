@@ -7,6 +7,7 @@ public class HealthSystem
 {
     public event EventHandler OnDamaged;
     public event EventHandler OnHealed;
+    public event EventHandler OnShieled;
 
     private HealthBar hpBar;
 
@@ -54,17 +55,6 @@ public class HealthSystem
 
     public void Heal(int healAmount)
     {
-        if (hasShieldActivated)
-        {
-            shieldAmount += healAmount;
-            if (shieldAmount > 100)
-            {
-                shieldAmount = shieldAmountMax;
-            }
-            OnHealed?.Invoke(this, EventArgs.Empty);
-            return;
-        }
-        
         healthAmount += healAmount;
         if (healthAmount > healthAmountMax)
         {
@@ -72,6 +62,17 @@ public class HealthSystem
         }
         
         OnHealed?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void Shield(int shieldAmountVoid)
+    {
+        if (!hasShieldActivated) return;
+        shieldAmount += shieldAmountVoid;
+        if (shieldAmount > 100)
+        {
+            shieldAmount = shieldAmountMax;
+        }
+        OnShieled?.Invoke(this, EventArgs.Empty);
     }
 
     public int GetHealth()

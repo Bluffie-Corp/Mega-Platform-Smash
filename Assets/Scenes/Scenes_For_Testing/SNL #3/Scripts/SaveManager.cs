@@ -52,4 +52,9 @@ public class SaveManager : MonoBehaviour
 
         return returnValue;
     }
+
+    public bool GetSaveExisting()
+    {
+        return File.Exists(Application.persistentDataPath + "/saves/" + PlayerPrefs.GetString("PreferredSave") + "/player.mps.save");
+    }
 }

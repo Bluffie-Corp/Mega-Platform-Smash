@@ -48,6 +48,7 @@ public class HealthBar : MonoBehaviour
         shieldSlider.value = 0;
         healthSystem.OnDamaged += HealthSystem_OnDamaged;
         healthSystem.OnHealed += HealthSystem_OnHealed;
+        healthSystem.OnShieled += HealthSystem_OnShieled;
 
         /* CMDebug.ButtonUI(new Vector2(-100, -50), "Damage", () => healthSystem.Damage(10));
         CMDebug.ButtonUI(new Vector2(+100, -50), "Heal", () => healthSystem.Heal(10)); */
@@ -90,6 +91,11 @@ public class HealthBar : MonoBehaviour
         SetFillHealth(healthSystem.GetHealth());
     }
 
+    private void HealthSystem_OnShieled(object sender, EventArgs e)
+    {
+        shieldSlider.value = healthSystem.GetShieldAmount();
+    }
+
     public void TakeDamage(int dmgAmount)
     {
         if (healthSystem.GetShieldActivated())
@@ -127,7 +133,7 @@ public class HealthBar : MonoBehaviour
             healthSystem.SetShieldActive(maxShieldAmount);
         }
 
-        healthSystem.Heal(shieldAmount);
+        healthSystem.Shield(shieldAmount);
         shieldSlider.value = healthSystem.GetShieldAmount();
         
         if (healthSystem.GetShieldAmount() >= 1)

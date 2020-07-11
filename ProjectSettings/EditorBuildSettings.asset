@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main_Menu/Saves_Screen.unity
     guid: 9dc46da3db2f04a23a55beceec4688f4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scenes_For_Testing/CharMovement/GameOverScene.unity
     guid: 8e4a96cb427b34877a7641f2c9730ab9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scenes_For_Testing/YAKS/LoadScene.unity
     guid: db379ef77b93e412e83078f1cd07f327
   - enabled: 1
